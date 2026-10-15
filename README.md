@@ -1,6 +1,6 @@
 # Naja Restaurant — Homepage
 
-Arabic-first (RTL) homepage for **Naja Restaurant — "Feel Fresh"**, Riyadh, styled in the logo's red, charcoal and white. It's built with plain HTML, CSS and vanilla JavaScript, with GSAP + ScrollTrigger for the scroll animations. There's no build step and no framework.
+Arabic-first (RTL) homepage for **Naja Restaurant — "Feel Fresh"**, Dammam, styled in the logo's red, charcoal and white. It's built with plain HTML, CSS and vanilla JavaScript, with GSAP + ScrollTrigger for the scroll animations. There's no build step and no framework.
 
 ## Brand identity
 

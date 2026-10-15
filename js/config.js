@@ -11,8 +11,8 @@
 window.restaurantConfig = {
   name: "Naja Restaurant",
   nameAr: "مطعم نجا", // TODO: confirm the official Arabic spelling with the restaurant
-  city: "Riyadh",
-  cityAr: "الرياض",
+  city: "Dammam",
+  cityAr: "الدمام",
   country: "SA",
   cuisine: "Mixed Menu",
   slogan: "Feel Fresh", // from the logo
@@ -26,11 +26,12 @@ window.restaurantConfig = {
   // Phone in international format, digits only or with +, e.g. "+9665XXXXXXXX"
   phone: "",
   // WhatsApp number in international format WITHOUT "+" or spaces, e.g. "9665XXXXXXXX"
-  whatsapp: "",
+  whatsapp: "966583815633", // +966 58 381 5633 (supplied by the restaurant)
   // Street address in both languages
   address: { ar: "", en: "" },
   // Full Google Maps link to the restaurant (share link from Google Maps)
-  googleMapsUrl: "",
+  // Currently a search for the city; replace with the restaurant's exact Google Maps pin link.
+  googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Dammam%2C%20Saudi%20Arabia",
 
   // Opening hours. Example entry:
   // { days: { ar: "السبت – الخميس", en: "Saturday – Thursday" }, time: { ar: "١٢:٠٠ م – ١٢:٠٠ ص", en: "12:00 PM – 12:00 AM" } }

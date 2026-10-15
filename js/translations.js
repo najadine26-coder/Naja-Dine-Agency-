@@ -10,8 +10,8 @@
 
 window.najaTranslations = {
   ar: {
-    "meta.title": "مطعم نجا | قائمة متنوعة في الرياض",
-    "meta.description": "مطعم نجا في الرياض — قائمة متنوعة من المشويات والأرز والوجبات السريعة والباستا والحلويات. تصفح القائمة واطلب بسهولة عبر واتساب.",
+    "meta.title": "مطعم نجا | قائمة متنوعة في الدمام",
+    "meta.description": "مطعم نجا في الدمام — قائمة متنوعة من المشويات والأرز والوجبات السريعة والباستا والحلويات. تصفح القائمة واطلب بسهولة عبر واتساب.",
 
     "skip": "تخطَّ إلى المحتوى",
     "brand.sub": "مطعم",
@@ -34,9 +34,9 @@ window.najaTranslations = {
     "cta.whatsappShort": "واتساب",
     "cta.explore": "استكشف قائمتنا",
 
-    "hero.eyebrow": "الرياض، المملكة العربية السعودية",
+    "hero.eyebrow": "الدمام، المملكة العربية السعودية",
     "hero.title": "اكتشف وجبتك المفضلة",
-    "hero.copy": "قائمة متنوعة تجمع المشويات والأرز والوجبات السريعة والحلويات — في مكان واحد في قلب الرياض.",
+    "hero.copy": "قائمة متنوعة تجمع المشويات والأرز والوجبات السريعة والحلويات — في مكان واحد في قلب الدمام.",
     "hero.scroll": "مرّر للأسفل",
 
     "nav.order": "طريقة الطلب",
@@ -95,7 +95,7 @@ window.najaTranslations = {
     "exp.h1Text": "من المشويات والأرز إلى الباستا والحلويات.",
     "exp.h2Title": "طلب سهل عبر واتساب",
     "exp.h2Text": "اختر طبقك وأرسل طلبك برسالة واحدة.",
-    "exp.h3Title": "في الرياض",
+    "exp.h3Title": "في الدمام",
     "exp.h3Text": "وجهتك القريبة لوجبة تستمتع بها.",
 
     "gal.eyebrow": "المعرض",
@@ -111,16 +111,25 @@ window.najaTranslations = {
 
     "visit.eyebrow": "زُرنا واطلب",
     "visit.title": "جاهز لوجبتك القادمة؟",
-    "visit.copy": "اطلب عبر واتساب أو اتصل بنا أو زرنا في الرياض.",
+    "visit.copy": "اطلب عبر واتساب أو اتصل بنا أو زرنا في الدمام.",
     "visit.address": "العنوان",
     "visit.hours": "ساعات العمل",
     "visit.phone": "الهاتف",
     "visit.whatsapp": "واتساب",
     "visit.tbc": "سيُعلن عنه قريباً",
-    "visit.cityLine": "الرياض، المملكة العربية السعودية",
+    "visit.cityLine": "الدمام، المملكة العربية السعودية",
     "visit.directions": "الاتجاهات على الخريطة",
     "visit.call": "اتصل الآن",
 
+    "footer.ctaTitle": "جاهز للطلب؟",
+    "footer.ctaText": "أرسل طلبك عبر واتساب، ويؤكد المطعم التوفر والمبلغ الإجمالي النهائي.",
+    "footer.about": "مطعم نجا في الدمام. قائمة متنوعة من المشويات والأرز والبرجر والباستا والحلويات، والطلب سهل عبر واتساب.",
+    "footer.location": "الموقع",
+    "footer.map": "موقعنا",
+    "footer.mapCity": "الدمام",
+    "footer.mapCountry": "المملكة العربية السعودية",
+    "footer.mapOpen": "افتح الدمام في خرائط Google",
+    "footer.mapOpenShort": "افتح في خرائط Google",
     "footer.nav": "روابط سريعة",
     "footer.contact": "تواصل",
     "footer.follow": "تابعنا",
@@ -138,9 +147,9 @@ window.najaTranslations = {
 
     "wa.order": "مرحباً {name}،\nأرغب بطلب:\n• {dish} × {qty}\n{priceLine}\nأرجو تأكيد توفر الطلب والمبلغ الإجمالي النهائي. شكراً لكم.",
     "wa.priceLine": "السعر المعروض: {price} ر.س للطبق",
-    "mp.metaTitle": "منيو مطعم نجا في الرياض | مشويات وبرجر وأرز وحلويات",
-    "mp.metaDesc": "اكتشف منيو مطعم نجا في الرياض: مشويات، أرز، برجر، وجبات سريعة، باستا، مشروبات وحلويات. ابحث عن طبقك بالعربية أو الإنجليزية واطلبه بسهولة عبر واتساب.",
-    "mp.heroEyebrow": "مطعم نجا · الرياض",
+    "mp.metaTitle": "منيو مطعم نجا في الدمام | مشويات وبرجر وأرز وحلويات",
+    "mp.metaDesc": "اكتشف منيو مطعم نجا في الدمام: مشويات، أرز، برجر، وجبات سريعة، باستا، مشروبات وحلويات. ابحث عن طبقك بالعربية أو الإنجليزية واطلبه بسهولة عبر واتساب.",
+    "mp.heroEyebrow": "مطعم نجا · الدمام",
     "mp.heroTitle": "قائمة الطعام",
     "mp.heroCopy": "من المشويات والأرز إلى البرجر والباستا والحلويات. تصفّح الأقسام، اختر طبقك، ثم اطلبه عبر واتساب.",
     "mp.viewDishes": "تصفّح الأطباق",
@@ -164,8 +173,8 @@ window.najaTranslations = {
   },
 
   en: {
-    "meta.title": "Naja Restaurant | Mixed Menu in Riyadh",
-    "meta.description": "Naja Restaurant in Riyadh — a mixed menu of grills, rice, fast food, pasta and desserts. Browse the menu and order easily on WhatsApp.",
+    "meta.title": "Naja Restaurant | Mixed Menu in Dammam",
+    "meta.description": "Naja Restaurant in Dammam — a mixed menu of grills, rice, fast food, pasta and desserts. Browse the menu and order easily on WhatsApp.",
 
     "skip": "Skip to content",
     "brand.sub": "Restaurant",
@@ -188,9 +197,9 @@ window.najaTranslations = {
     "cta.whatsappShort": "WhatsApp",
     "cta.explore": "Explore Our Menu",
 
-    "hero.eyebrow": "Riyadh, Saudi Arabia",
+    "hero.eyebrow": "Dammam, Saudi Arabia",
     "hero.title": "Discover Your Next Favorite Meal",
-    "hero.copy": "A mixed menu of grills, rice dishes, fast food and desserts — all in one place in the heart of Riyadh.",
+    "hero.copy": "A mixed menu of grills, rice dishes, fast food and desserts — all in one place in the heart of Dammam.",
     "hero.scroll": "Scroll",
 
     "nav.order": "How to Order",
@@ -249,7 +258,7 @@ window.najaTranslations = {
     "exp.h1Text": "From grills and rice to pasta and desserts.",
     "exp.h2Title": "Simple WhatsApp ordering",
     "exp.h2Text": "Choose your dish and send your order in one message.",
-    "exp.h3Title": "In Riyadh",
+    "exp.h3Title": "In Dammam",
     "exp.h3Text": "Your nearby destination for a meal to enjoy.",
 
     "gal.eyebrow": "Gallery",
@@ -265,16 +274,25 @@ window.najaTranslations = {
 
     "visit.eyebrow": "Visit & Order",
     "visit.title": "Ready for Your Next Meal?",
-    "visit.copy": "Order on WhatsApp, give us a call, or visit us in Riyadh.",
+    "visit.copy": "Order on WhatsApp, give us a call, or visit us in Dammam.",
     "visit.address": "Address",
     "visit.hours": "Opening Hours",
     "visit.phone": "Phone",
     "visit.whatsapp": "WhatsApp",
     "visit.tbc": "To be announced",
-    "visit.cityLine": "Riyadh, Saudi Arabia",
+    "visit.cityLine": "Dammam, Saudi Arabia",
     "visit.directions": "Get Directions",
     "visit.call": "Call Now",
 
+    "footer.ctaTitle": "Ready to Order?",
+    "footer.ctaText": "Send your order on WhatsApp and the restaurant will confirm availability and the final total.",
+    "footer.about": "Naja Restaurant in Dammam. A mixed menu of grills, rice, burgers, pasta and desserts, with easy ordering on WhatsApp.",
+    "footer.location": "Location",
+    "footer.map": "Find Us",
+    "footer.mapCity": "Dammam",
+    "footer.mapCountry": "Saudi Arabia",
+    "footer.mapOpen": "Open Dammam in Google Maps",
+    "footer.mapOpenShort": "Open in Google Maps",
     "footer.nav": "Quick Links",
     "footer.contact": "Contact",
     "footer.follow": "Follow",
@@ -292,9 +310,9 @@ window.najaTranslations = {
 
     "wa.order": "Hello {name},\nI'd like to order:\n• {dish} × {qty}\n{priceLine}\nPlease confirm availability and the final total. Thank you.",
     "wa.priceLine": "Displayed price: SAR {price} each",
-    "mp.metaTitle": "Naja Restaurant Menu, Riyadh | Grills, Burgers & More",
-    "mp.metaDesc": "Explore the Naja Restaurant menu in Riyadh: grills, rice, burgers, fast food, pasta, drinks and desserts. Find your dish and order easily on WhatsApp.",
-    "mp.heroEyebrow": "Naja Restaurant · Riyadh",
+    "mp.metaTitle": "Naja Restaurant Menu, Dammam | Grills, Burgers & More",
+    "mp.metaDesc": "Explore the Naja Restaurant menu in Dammam: grills, rice, burgers, fast food, pasta, drinks and desserts. Find your dish and order easily on WhatsApp.",
+    "mp.heroEyebrow": "Naja Restaurant · Dammam",
     "mp.heroTitle": "Explore Our Menu",
     "mp.heroCopy": "From grills and rice to burgers, pasta and desserts. Browse the categories, pick your dish and order it on WhatsApp.",
     "mp.viewDishes": "View Dishes",

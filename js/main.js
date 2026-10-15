@@ -722,6 +722,11 @@
      --------------------------------------------------------------------- */
   function tbc() { return '<span class="tbc">' + esc(t("visit.tbc")) + "</span>"; }
 
+  // "966583815633" -> "+966 58 381 5633" (Saudi mobile); other numbers keep a plain + prefix
+  function displayPhone(d) {
+    return /^9665\d{8}$/.test(d) ? "+966 " + d.slice(3, 5) + " " + d.slice(5, 8) + " " + d.slice(8) : "+" + d;
+  }
+
   function renderContact() {
     var phone = digits(config.phone), wa = digits(config.whatsapp);
     var address = loc(config.address);
@@ -741,17 +746,22 @@
         : tbc();
     }
     var phoneEl = $("#infoPhone");
-    if (phoneEl) phoneEl.innerHTML = phone ? '<a class="ltr" href="tel:+' + phone + '">+' + esc(phone) + "</a>" : tbc();
+    if (phoneEl) phoneEl.innerHTML = phone ? '<a class="ltr" href="tel:+' + phone + '">' + esc(displayPhone(phone)) + "</a>" : tbc();
     var waEl = $("#infoWhatsapp");
-    if (waEl) waEl.innerHTML = wa ? '<a class="ltr" href="' + esc(waUrl("")) + '" target="_blank" rel="noopener noreferrer">+' + esc(wa) + "</a>" : tbc();
+    if (waEl) waEl.innerHTML = wa ? '<a class="ltr" href="' + esc(waUrl("")) + '" target="_blank" rel="noopener noreferrer">' + esc(displayPhone(wa)) + "</a>" : tbc();
 
-    // Footer contact
+    // Footer contact (icon rows; only configured details)
     var fc = $("#footerContact");
     if (fc) {
-      var rows = ["<li><span>" + esc(address ? address + (isRTL() ? "، " : ", ") + t("visit.cityLine") : t("visit.cityLine")) + "</span></li>"];
-      if (phone) rows.push('<li><a class="ltr" href="tel:+' + phone + '" dir="ltr">+' + esc(phone) + "</a></li>");
-      if (wa) rows.push('<li><a href="' + esc(waUrl("")) + '" target="_blank" rel="noopener noreferrer">' + esc(t("visit.whatsapp")) + "</a></li>");
-      if (config.googleMapsUrl) rows.push('<li><a href="' + esc(config.googleMapsUrl) + '" target="_blank" rel="noopener noreferrer">' + esc(t("visit.directions")) + "</a></li>");
+      var row = function (icon, label, value) {
+        return '<li class="footer-contact__row"><svg class="icon" aria-hidden="true"><use href="#' + icon + '"/></svg>' +
+          '<span><span class="footer-contact__label">' + esc(label) + "</span>" + value + "</span></li>";
+      };
+      var rows = [row("i-pin", t("footer.location"), "<span>" + esc(address ? address + (isRTL() ? "، " : ", ") + t("visit.cityLine") : t("visit.cityLine")) + "</span>")];
+      if (wa) rows.push(row("i-whatsapp", t("visit.whatsapp"), '<a class="ltr" dir="ltr" href="' + esc(waUrl("")) + '" target="_blank" rel="noopener noreferrer">' + esc(displayPhone(wa)) + "</a>"));
+      if (phone) rows.push(row("i-phone", t("visit.phone"), '<a class="ltr" dir="ltr" href="tel:+' + phone + '">' + esc(displayPhone(phone)) + "</a>"));
+      var fh = config.openingHours || [];
+      if (fh.length) rows.push(row("i-clock", t("visit.hours"), fh.map(function (h) { return "<span>" + esc(loc(h.days)) + " · " + esc(loc(h.time)) + "</span>"; }).join("<br>")));
       fc.innerHTML = rows.join("");
     }
 
@@ -815,7 +825,7 @@
       address: {
         "@type": "PostalAddress",
         streetAddress: (config.address && config.address.en) || undefined,
-        addressLocality: config.city || "Riyadh",
+        addressLocality: config.city || "Dammam",
         addressCountry: config.country || "SA"
       }
     };
@@ -947,6 +957,26 @@
     var btn = e.target.closest && e.target.closest(".btn--lg.is-magnetic");
     if (btn && !btn.contains(e.relatedTarget)) { btn.style.transform = ""; btn.classList.remove("is-magnetic"); }
   });
+
+  /* ---------------------------------------------------------------------
+     One-shot "in view" class (footer map animation)
+     --------------------------------------------------------------------- */
+  (function () {
+    var els = $$("[data-inview]");
+    if (!els.length) return;
+    if (!("IntersectionObserver" in window) || reducedMotion.matches) {
+      els.forEach(function (el) { el.classList.add("is-inview"); });
+      return;
+    }
+    var seen = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-inview");
+        seen.unobserve(entry.target);
+      });
+    }, { threshold: 0.35 });
+    els.forEach(function (el) { seen.observe(el); });
+  })();
 
   /* ---------------------------------------------------------------------
      Language
