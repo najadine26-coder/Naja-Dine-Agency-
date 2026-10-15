@@ -1343,3 +1343,36 @@ body.has-action-bar .toast { bottom: calc(86px + env(safe-area-inset-bottom)); }
 .site-footer__brand .wordmark { display: flex; width: max-content; }
 .site-footer__brand .tagline { display: table; }
 [dir="rtl"] .site-footer__brand .tagline { margin-left: auto; margin-right: 0; transform-origin: right center; }
+
+/* =========================================================================
+   ABOUT NAJA (SEO content) + FAQ
+   ========================================================================= */
+.about-naja { border-top: 1px solid var(--brand-line); }
+.about-naja__grid { display: grid; gap: clamp(44px, 6vw, 88px); align-items: start; }
+.about-naja .section-copy { max-width: 62ch; }
+.about-naja .section-copy + .section-copy { margin-block-start: 16px; }
+.about-naja__cta { margin-top: 34px; }
+@media (max-width: 479px) { .about-naja__cta { width: 100%; } }
+@media (min-width: 1024px) { .about-naja__grid { grid-template-columns: 1.05fr 0.95fr; } }
+
+.faq__title { font-size: 1.25rem; font-weight: 700; color: var(--cream); margin-bottom: 18px; }
+.faq__title:lang(en), [lang="en"] .faq__title { font-weight: 500; }
+.faq { border-top: 1px solid var(--brand-line); }
+.faq__item { border-bottom: 1px solid var(--brand-line); }
+.faq__q {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  min-height: 64px; padding-block: 16px; cursor: pointer; list-style: none;
+  font-size: 1.05rem; font-weight: 600; color: var(--cream); transition: color 0.3s;
+}
+.faq__q::-webkit-details-marker { display: none; }
+.faq__q:hover, .faq__item[open] .faq__q { color: var(--brand); }
+.faq__icon { position: relative; width: 32px; height: 32px; flex: none; border: 1px solid var(--brand-line); transition: background 0.4s var(--ease), border-color 0.4s; }
+.faq__icon::before, .faq__icon::after {
+  content: ""; position: absolute; top: 50%; left: 50%; width: 12px; height: 1.5px; background: currentColor;
+  transform: translate(-50%, -50%); transition: transform 0.4s var(--ease);
+}
+.faq__icon::after { transform: translate(-50%, -50%) rotate(90deg); }
+.faq__item[open] .faq__icon { background: var(--grad-brand); border-color: transparent; color: #ffffff; }
+.faq__item[open] .faq__icon::after { transform: translate(-50%, -50%) rotate(0deg); }
+.faq__a { padding-bottom: 20px; color: var(--muted); font-size: 0.97rem; line-height: 1.8; max-width: 60ch; }
+.faq__item[open] .faq__a { animation: itemIn 0.5s var(--ease) both; }

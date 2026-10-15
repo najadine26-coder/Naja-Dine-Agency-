@@ -811,6 +811,38 @@
     }
   }
 
+  /* ---------------------------------------------------------------------
+     Homepage FAQ (visible list + FAQPage structured data from the same text)
+     --------------------------------------------------------------------- */
+  var FAQ_COUNT = 4;
+  function faqAnswer(i, html) {
+    var phone = digits(config.phone) || digits(config.whatsapp);
+    var num = phone ? displayPhone(phone) : t("visit.tbc");
+    var text = t("faq.a" + i);
+    if (!html) return text.split("{phone}").join(num);
+    return text.split("{phone}").map(esc).join('<span dir="ltr">' + esc(num) + "</span>");
+  }
+  function renderFaq() {
+    var list = $("#faqList");
+    if (!list) return;
+    var open = $$("details", list).map(function (d) { return d.open; });
+    var html = "";
+    for (var i = 1; i <= FAQ_COUNT; i++) {
+      html += '<details class="faq__item"' + ((open.length ? open[i - 1] : i === 1) ? " open" : "") + ">" +
+        '<summary class="faq__q"><span>' + esc(t("faq.q" + i)) + '</span><span class="faq__icon" aria-hidden="true"></span></summary>' +
+        '<div class="faq__a"><p>' + faqAnswer(i, true) + "</p></div></details>";
+    }
+    list.innerHTML = html;
+    var ld = $("#faqJsonld");
+    if (ld) {
+      var entities = [];
+      for (var j = 1; j <= FAQ_COUNT; j++) {
+        entities.push({ "@type": "Question", name: t("faq.q" + j), acceptedAnswer: { "@type": "Answer", text: faqAnswer(j, false) } });
+      }
+      ld.textContent = JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: entities });
+    }
+  }
+
   function updateJsonLd() {
     var el = $("#jsonld");
     if (!el) return;
@@ -991,6 +1023,7 @@
     renderMenu();
     renderGallery();
     renderContact();
+    renderFaq();
     refreshActions();
     if (state.lightboxIndex > -1) showLightbox(state.lightboxIndex);
   }

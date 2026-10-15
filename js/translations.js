@@ -10,8 +10,8 @@
 
 window.najaTranslations = {
   ar: {
-    "meta.title": "مطعم نجا | قائمة متنوعة في الدمام",
-    "meta.description": "مطعم نجا في الدمام — قائمة متنوعة من المشويات والأرز والوجبات السريعة والباستا والحلويات. تصفح القائمة واطلب بسهولة عبر واتساب.",
+    "meta.title": "مطعم نجا في الدمام | مشويات وبرجر وأرز – اطلب عبر واتساب",
+    "meta.description": "مطعم نجا في الدمام: قائمة متنوعة من المشويات والأرز والبرجر والوجبات السريعة والباستا والحلويات. تصفّح القائمة واطلب بسهولة عبر واتساب أو اتصل بنا.",
 
     "skip": "تخطَّ إلى المحتوى",
     "brand.sub": "مطعم",
@@ -121,6 +121,21 @@ window.najaTranslations = {
     "visit.directions": "الاتجاهات على الخريطة",
     "visit.call": "اتصل الآن",
 
+    "seo.eyebrow": "عن مطعم نجا",
+    "seo.title": "مطعم نجا في الدمام: قائمة متنوعة لكل الأذواق",
+    "seo.p1": "مطعم نجا في الدمام بالمملكة العربية السعودية يقدّم قائمة متنوعة تجمع المشويات والأطباق الرئيسية والأرز والبرجر والوجبات السريعة والباستا، إلى جانب المشروبات والحلويات. سواء كنت تبحث عن وجبة عائلية أو غداء سريع، ستجد في قائمتنا ما يناسب ذوقك.",
+    "seo.p2": "تصفّح قائمة الطعام كاملة بالعربية أو الإنجليزية، وابحث عن طبقك المفضل، ثم أرسل طلبك مباشرة عبر واتساب برسالة جاهزة بتفاصيل الطلب. يؤكد المطعم توفر الطلب والمبلغ الإجمالي النهائي قبل التحضير.",
+    "seo.p3": "شعارنا «Feel Fresh» يلخّص ما نسعى إليه: وجبة تستمتع بها، وتجربة طلب سهلة وواضحة من أول خطوة إلى آخرها.",
+    "seo.menuCta": "تصفّح قائمة الطعام",
+    "faq.title": "أسئلة شائعة",
+    "faq.q1": "أين يقع مطعم نجا؟",
+    "faq.a1": "يقع مطعم نجا في مدينة الدمام بالمملكة العربية السعودية. سنضيف العنوان التفصيلي وموقع المطعم على الخريطة قريباً.",
+    "faq.q2": "كيف أطلب من مطعم نجا؟",
+    "faq.a2": "اختر طبقك من القائمة واضغط «اطلب عبر واتساب»، أو تواصل معنا مباشرة على الرقم {phone} عبر واتساب أو اتصال هاتفي.",
+    "faq.q3": "ماذا تقدّم قائمة مطعم نجا؟",
+    "faq.a3": "قائمة متنوعة تشمل الأطباق الرئيسية والأرز والمشويات والبرجر والوجبات السريعة والباستا والمشروبات والحلويات.",
+    "faq.q4": "هل القائمة متوفرة باللغة الإنجليزية؟",
+    "faq.a4": "نعم، يمكنك التبديل بين العربية والإنجليزية في أي وقت من زر اللغة أعلى الصفحة، وتعمل القائمة والبحث والطلب باللغتين.",
     "footer.ctaTitle": "جاهز للطلب؟",
     "footer.ctaText": "أرسل طلبك عبر واتساب، ويؤكد المطعم التوفر والمبلغ الإجمالي النهائي.",
     "footer.about": "مطعم نجا في الدمام. قائمة متنوعة من المشويات والأرز والبرجر والباستا والحلويات، والطلب سهل عبر واتساب.",
@@ -173,8 +188,8 @@ window.najaTranslations = {
   },
 
   en: {
-    "meta.title": "Naja Restaurant | Mixed Menu in Dammam",
-    "meta.description": "Naja Restaurant in Dammam — a mixed menu of grills, rice, fast food, pasta and desserts. Browse the menu and order easily on WhatsApp.",
+    "meta.title": "Naja Restaurant in Dammam | Grills, Burgers & More",
+    "meta.description": "Naja Restaurant in Dammam, Saudi Arabia: a mixed menu of grills, rice, burgers, fast food, pasta and desserts. Browse the menu and order easily on WhatsApp.",
 
     "skip": "Skip to content",
     "brand.sub": "Restaurant",
@@ -284,6 +299,21 @@ window.najaTranslations = {
     "visit.directions": "Get Directions",
     "visit.call": "Call Now",
 
+    "seo.eyebrow": "About Naja",
+    "seo.title": "Naja Restaurant in Dammam: A Mixed Menu for Every Taste",
+    "seo.p1": "Naja Restaurant in Dammam, Saudi Arabia, serves a mixed menu of grills, main courses, rice dishes, burgers, fast food and pasta, along with drinks and desserts. Whether you want a family meal or a quick lunch, you'll find something on our menu to suit your taste.",
+    "seo.p2": "Browse the full menu in Arabic or English, search for your favourite dish, then send your order straight to us on WhatsApp with a ready-made message. The restaurant confirms availability and the final total before preparing your order.",
+    "seo.p3": "Our tagline, “Feel Fresh”, sums up what we aim for: a meal you enjoy and an ordering experience that is simple and clear from start to finish.",
+    "seo.menuCta": "Browse the Menu",
+    "faq.title": "Frequently Asked Questions",
+    "faq.q1": "Where is Naja Restaurant located?",
+    "faq.a1": "Naja Restaurant is in Dammam, Saudi Arabia. We'll add the full street address and map location soon.",
+    "faq.q2": "How do I order from Naja Restaurant?",
+    "faq.a2": "Pick a dish from the menu and tap “Order on WhatsApp”, or contact us directly on {phone} by WhatsApp or phone call.",
+    "faq.q3": "What is on the Naja Restaurant menu?",
+    "faq.a3": "A mixed menu of main courses, rice dishes, grills, burgers, fast food, pasta, beverages and desserts.",
+    "faq.q4": "Is the menu available in English?",
+    "faq.a4": "Yes. Switch between Arabic and English at any time with the language button at the top of the page; the menu, search and ordering all work in both languages.",
     "footer.ctaTitle": "Ready to Order?",
     "footer.ctaText": "Send your order on WhatsApp and the restaurant will confirm availability and the final total.",
     "footer.about": "Naja Restaurant in Dammam. A mixed menu of grills, rice, burgers, pasta and desserts, with easy ordering on WhatsApp.",
