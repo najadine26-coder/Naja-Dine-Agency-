@@ -5,6 +5,7 @@
   "description": "Naja Restaurant — Arabic-first cinematic homepage (HTML, CSS, vanilla JS, GSAP).",
   "scripts": {
     "start": "node scripts/serve.mjs 8080",
-    "check": "node --check js/config.js && node --check js/menu-data.js && node --check js/translations.js && node --check js/main.js && node --check js/animations.js"
+    "check": "node --check js/config.js && node --check js/menu-data.js && node --check js/translations.js && node --check js/main.js && node --check js/animations.js && for f in $(find wordpress-theme -name \"*.php\"); do php -l \"$f\" >/dev/null || exit 1; done",
+    "build:wp": "bash scripts/build-wp-theme.sh"
   }
 }

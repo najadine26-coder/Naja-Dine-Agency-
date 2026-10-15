@@ -78,20 +78,22 @@
         });
       });
 
-      /* --- 01 HERO: layered parallax depth --- */
-      var heroTl = gsap.timeline({
-        scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }
-      });
-      heroTl
-        .to(".hero__media", { yPercent: c.desktop ? 14 : 8, scale: 1.08, ease: "none" }, 0)
-        .to(".hero__content", { y: c.desktop ? -120 : -60, autoAlpha: 0.1, ease: "none" }, 0);
-      if (has(".hero__ghost")) heroTl.to(".hero__ghost", { yPercent: -35, ease: "none" }, 0);
-      if (has(".hero__scroll")) heroTl.to(".hero__scroll", { autoAlpha: 0, ease: "none", duration: 0.25 }, 0);
-      if (c.desktop && has(".hero__frame")) {
-        heroTl.to(".hero__frame", {
-          y: -200, rotateY: -10 * dir, rotateX: 6, z: 80,
-          transformPerspective: 1200, ease: "none"
-        }, 0);
+      /* --- 01 HERO: layered parallax depth (pages without a hero skip it) --- */
+      if (has(".hero")) {
+        var heroTl = gsap.timeline({
+          scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }
+        });
+        heroTl
+          .to(".hero__media", { yPercent: c.desktop ? 14 : 8, scale: 1.08, ease: "none" }, 0)
+          .to(".hero__content", { y: c.desktop ? -120 : -60, autoAlpha: 0.1, ease: "none" }, 0);
+        if (has(".hero__ghost")) heroTl.to(".hero__ghost", { yPercent: -35, ease: "none" }, 0);
+        if (has(".hero__scroll")) heroTl.to(".hero__scroll", { autoAlpha: 0, ease: "none", duration: 0.25 }, 0);
+        if (c.desktop && has(".hero__frame")) {
+          heroTl.to(".hero__frame", {
+            y: -200, rotateY: -10 * dir, rotateX: 6, z: 80,
+            transformPerspective: 1200, ease: "none"
+          }, 0);
+        }
       }
 
       /* --- Section headings: word-by-word cinematic reveal (blur → sharp).

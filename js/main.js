@@ -239,18 +239,23 @@
       el.dir = alt === "ar" ? "rtl" : "ltr";
     });
 
-    var titleKey = document.body.dataset.metaTitle || "meta.title";
-    var descKey = document.body.dataset.metaDesc || "meta.description";
-    document.title = t(titleKey);
-    var desc = $('meta[name="description"]');
-    if (desc) desc.setAttribute("content", t(descKey));
-    var ogTitle = $('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute("content", t(titleKey));
-    var ogDesc = $('meta[property="og:description"]');
-    if (ogDesc && document.body.dataset.metaDesc) ogDesc.setAttribute("content", t(descKey));
-    var twTitle = $('meta[name="twitter:title"]'), twDesc = $('meta[name="twitter:description"]');
-    if (twTitle) twTitle.setAttribute("content", t(titleKey));
-    if (twDesc) twDesc.setAttribute("content", t(descKey));
+    // Pages say which title/description keys to translate. A page that sets data-page but no
+    // keys (e.g. a WordPress page, or when an SEO plugin owns the tags) keeps its own.
+    var body = document.body.dataset;
+    var titleKey = body.metaTitle || (body.page ? "" : "meta.title");
+    var descKey = body.metaDesc || (body.page ? "" : "meta.description");
+    if (titleKey) {
+      document.title = t(titleKey);
+      var ogTitle = $('meta[property="og:title"]'), twTitle = $('meta[name="twitter:title"]');
+      if (ogTitle) ogTitle.setAttribute("content", t(titleKey));
+      if (twTitle) twTitle.setAttribute("content", t(titleKey));
+    }
+    if (descKey) {
+      var desc = $('meta[name="description"]'), ogDesc = $('meta[property="og:description"]'), twDesc = $('meta[name="twitter:description"]');
+      if (desc) desc.setAttribute("content", t(descKey));
+      if (ogDesc) ogDesc.setAttribute("content", t(descKey));
+      if (twDesc) twDesc.setAttribute("content", t(descKey));
+    }
     var ogLocale = $('meta[property="og:locale"]');
     if (ogLocale) ogLocale.setAttribute("content", lang === "ar" ? "ar_SA" : "en_US");
     var ogAlt = $('meta[property="og:locale:alternate"]');
@@ -259,7 +264,7 @@
     // Links to the other page carry the chosen language (localStorage can be blocked)
     $$("a[data-page-link]").forEach(function (a) {
       var parts = a.dataset.pageLink.split("#");
-      var query = lang === (config.defaultLanguage || "ar") ? "" : "?lang=" + lang;
+      var query = lang === (config.defaultLanguage || "ar") ? "" : (parts[0].indexOf("?") > -1 ? "&" : "?") + "lang=" + lang;
       a.setAttribute("href", parts[0] + query + (parts[1] ? "#" + parts[1] : ""));
     });
   }

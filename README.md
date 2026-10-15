@@ -51,7 +51,10 @@ naja-restaurant/
 ├── js/vendor/              GSAP 3.12.5 + ScrollTrigger (self-hosted, no CDN dependency)
 ├── assets/fonts/           Fustat, Inter and Kaushan Script WOFF2 files (SIL Open Font License)
 ├── assets/images/          naja-sign.webp (logo sign) — add the restaurant's own photos here
-└── scripts/serve.mjs       Local dev server
+├── css/wp.css              WordPress-only styles (admin bar offsets, regular pages)
+├── wordpress-theme/        WordPress theme PHP (templates, Customizer, Dishes)
+├── scripts/serve.mjs       Local dev server
+└── scripts/build-wp-theme.sh  Builds dist/naja-restaurant-theme.zip
 ```
 
 ★ = files the restaurant/content editor normally changes.
@@ -90,6 +93,20 @@ The header, footer, language switcher, WhatsApp logic, lightbox and design token
 **Structured data:** the menu page publishes the same Restaurant JSON-LD as the homepage. Menu items are added as `hasMenu` only once they're marked `placeholder: false`, so no sample dish or price is ever published as real.
 
 **Language:** switching language keeps the same dish in view. Links between the two pages carry `?lang=en`, so the choice survives even when localStorage is blocked.
+
+## WordPress theme
+
+The same site is also packaged as a WordPress theme. The theme's PHP lives in `wordpress-theme/naja-restaurant/`, and its front end is the shared `css/`, `js/` and `assets/`, so the static site and the theme never drift apart.
+
+```bash
+npm run build:wp   # → dist/naja-restaurant-theme.zip (upload in Appearance → Themes → Add New)
+```
+
+- **Homepage** = `front-page.php`. **Menu page** = the "Naja Menu" page template; a page with that template is created when the theme is activated.
+- **Appearance → Customize → Naja Restaurant** holds the WhatsApp and phone numbers, address, Google Maps link, opening hours, social links, the sample-price switch and photo replacements. These override `js/config.js` at runtime.
+- **Dishes** in wp-admin manage the real menu: Arabic and English names and descriptions, category, price, photo, a sample flag and a signature flag. Once one dish is published, it replaces the samples in `js/menu-data.js`. Only confirmed dishes are published as `hasMenu` structured data.
+- If an SEO plugin is active (Rank Math, Yoast, AIOSEO or SEOPress), the theme leaves titles and descriptions to it.
+- `css/wp.css` holds the WordPress-only styles: admin-toolbar offsets and the styling for ordinary pages and posts.
 
 ## ⚠️ Before launch: details still to be supplied
 
