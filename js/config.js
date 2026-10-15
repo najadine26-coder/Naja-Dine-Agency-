@@ -115,3 +115,13 @@ window.najaGallery = [
   { image: "presentation", shape: "wide", caption: { ar: "على لوح التقديم", en: "On the board" } },
   { image: "burger", shape: "tall", caption: { ar: "كلاسيكيات مفضلة", en: "Favourite classics" } }
 ];
+
+/* Menu page — featured food gallery (6 images). Same shapes as above. */
+window.najaMenuGallery = [
+  { image: "hero", shape: "feature", caption: { ar: "ألوان المائدة", en: "Colours of the table" } },
+  { image: "grill", shape: "tall", caption: { ar: "من الشواية", en: "From the grill" } },
+  { image: "burger", shape: "square", caption: { ar: "البرجر والكلاسيكيات", en: "Burgers and classics" } },
+  { image: "pizza", shape: "square", caption: { ar: "من الفرن", en: "From the oven" } },
+  { image: "presentation", shape: "wide", caption: { ar: "أطباق للمشاركة", en: "Made for sharing" } },
+  { image: "plated", shape: "wide", caption: { ar: "تقديم بعناية", en: "Thoughtful plating" } }
+];

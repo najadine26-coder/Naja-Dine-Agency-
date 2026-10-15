@@ -7,7 +7,9 @@
 
   var config = window.restaurantConfig || {};
   var images = window.najaImages || {};
-  var gallery = window.najaGallery || [];
+  var page = document.body.dataset.page || "home";
+  var galleryHost = document.getElementById("galleryGrid");
+  var gallery = (galleryHost && galleryHost.dataset.source === "menu" && window.najaMenuGallery) || window.najaGallery || [];
   var categories = window.najaMenuCategories || [];
   var signature = window.najaSignatureDishes || [];
   var menuItems = window.najaMenuItems || [];
@@ -62,6 +64,7 @@
     return t("price", { price: Number(value).toLocaleString("en-US") }, lang);
   }
   function pricesVisible() { return config.showSamplePrices !== false; }
+  function showPrice(item) { return item.price != null && (!item.placeholder || pricesVisible()); }
   function isRTL() { return state.lang === "ar"; }
   function animations() { return window.NajaAnimations; }
 
@@ -150,7 +153,7 @@
     var dish = findDish(dishId);
     if (!dish) return t("wa.general", { name: name });
     var qty = state.qty[dishId] || 1;
-    var priceLine = (pricesVisible() && dish.price != null)
+    var priceLine = showPrice(dish)
       ? t("wa.priceLine", { price: Number(dish.price).toLocaleString("en-US") })
       : "";
     return t("wa.order", { name: name, dish: loc(dish.name), qty: qty, priceLine: priceLine })
@@ -164,6 +167,8 @@
   }
 
   function setAction(el, href, missingKey, external) {
+    // Menu page: actions marked data-hide-missing disappear instead of disabling
+    if (el.hasAttribute("data-hide-missing")) el.hidden = !href;
     if (href) {
       el.setAttribute("href", href);
       el.removeAttribute("aria-disabled");
@@ -234,15 +239,26 @@
       el.dir = alt === "ar" ? "rtl" : "ltr";
     });
 
-    document.title = t("meta.title");
+    var titleKey = document.body.dataset.metaTitle || "meta.title";
+    var descKey = document.body.dataset.metaDesc || "meta.description";
+    document.title = t(titleKey);
     var desc = $('meta[name="description"]');
-    if (desc) desc.setAttribute("content", t("meta.description"));
+    if (desc) desc.setAttribute("content", t(descKey));
     var ogTitle = $('meta[property="og:title"]');
-    if (ogTitle) ogTitle.setAttribute("content", t("meta.title"));
+    if (ogTitle) ogTitle.setAttribute("content", t(titleKey));
+    var ogDesc = $('meta[property="og:description"]');
+    if (ogDesc && document.body.dataset.metaDesc) ogDesc.setAttribute("content", t(descKey));
     var ogLocale = $('meta[property="og:locale"]');
     if (ogLocale) ogLocale.setAttribute("content", lang === "ar" ? "ar_SA" : "en_US");
     var ogAlt = $('meta[property="og:locale:alternate"]');
     if (ogAlt) ogAlt.setAttribute("content", lang === "ar" ? "en_US" : "ar_SA");
+
+    // Links to the other page carry the chosen language (localStorage can be blocked)
+    $$("a[data-page-link]").forEach(function (a) {
+      var parts = a.dataset.pageLink.split("#");
+      var query = lang === (config.defaultLanguage || "ar") ? "" : "?lang=" + lang;
+      a.setAttribute("href", parts[0] + query + (parts[1] ? "#" + parts[1] : ""));
+    });
   }
 
   /* ---------------------------------------------------------------------
@@ -350,11 +366,27 @@
     return id;
   }
 
+  function countIn(id) {
+    return id === "all" ? menuItems.length : menuItems.filter(function (m) { return m.category === id; }).length;
+  }
+
   function renderCategories() {
     if (!catsEl) return;
-    catsEl.innerHTML = categories.map(function (c) {
-      return '<button type="button" class="cat-btn" data-cat="' + esc(c.id) + '" aria-pressed="' + (c.id === state.category) + '">' + esc(loc(c.label)) + "</button>";
+    var withCounts = catsEl.hasAttribute("data-counts");
+    catsEl.innerHTML = categories.filter(function (c) { return countIn(c.id) > 0; }).map(function (c) {
+      return '<button type="button" class="cat-btn" data-cat="' + esc(c.id) + '" aria-pressed="' + (c.id === state.category) + '">' + esc(loc(c.label)) +
+        (withCounts ? '<span class="cat-btn__count" aria-hidden="true">' + countIn(c.id) + "</span>" : "") + "</button>";
     }).join("");
+  }
+
+  // Keep the pressed category visible inside a horizontally scrolling bar
+  function revealActiveCategory() {
+    if (!catsEl || !catsEl.hasAttribute("data-counts")) return;
+    var btn = $('[aria-pressed="true"]', catsEl);
+    if (!btn) return;
+    var r = catsEl.getBoundingClientRect();
+    if (r.top < 0 || r.bottom > window.innerHeight) return;
+    try { btn.scrollIntoView({ block: "nearest", inline: "center", behavior: reducedMotion.matches ? "auto" : "smooth" }); } catch (e) { /* ignore */ }
   }
 
   function filteredItems() {
@@ -368,11 +400,69 @@
     });
   }
 
+  /* Menu page card layout */
+  var cardObserver = null;
+  function observeCards() {
+    if (!("IntersectionObserver" in window) || reducedMotion.matches) return;
+    if (!cardObserver) {
+      cardObserver = new IntersectionObserver(function (entries) {
+        var n = 0;
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.style.setProperty("--d", String(n++ % 6));
+          entry.target.classList.remove("is-pending");
+          cardObserver.unobserve(entry.target);
+        });
+      }, { rootMargin: "0px 0px -6% 0px" });
+    }
+    $$(".menu-card", gridEl).forEach(function (card) {
+      card.classList.add("is-pending");
+      cardObserver.observe(card);
+    });
+  }
+
+  function menuCardsHtml(items) {
+    var alt = other(state.lang);
+    return items.map(function (item) {
+      var img = item.image && images[item.image];
+      var media = img
+        ? '<img data-img="' + esc(item.image) + '" data-img-sizes="(min-width: 1440px) 22vw, (min-width: 1024px) 30vw, (min-width: 560px) 48vw, 100vw" alt="' + esc(loc(img.alt)) + '" loading="lazy" decoding="async" width="1100" height="825">'
+        : '<span class="menu-card__ph"><span class="menu-card__ph-mark" aria-hidden="true">Naja</span><span class="menu-card__ph-text">' + esc(t("mp.noPhoto")) + "</span></span>";
+      var price = showPrice(item)
+        ? '<div class="price"><span class="price__value">' + esc(formatPrice(item.price)) + "</span>" +
+          (item.placeholder ? '<span class="price__note">' + esc(t("sig.samplePrice")) + "</span>" : "") + "</div>"
+        : "<div></div>";
+      return (
+        '<li class="menu-card" data-anchor="' + esc(item.id) + '">' +
+          '<article class="dish-card dish-card--menu" aria-labelledby="dish-' + esc(item.id) + '">' +
+            '<div class="dish-card__inner">' +
+              '<div class="dish-card__media img-frame' + (img ? "" : " is-noimg") + '">' + media +
+                (item.placeholder ? '<span class="menu-card__badge">' + esc(t("mp.sampleBadge")) + "</span>" : "") +
+              "</div>" +
+              '<div class="dish-card__body">' +
+                '<p class="menu-card__cat">' + esc(categoryLabel(item.category)) + "</p>" +
+                '<h3 class="dish-card__name" id="dish-' + esc(item.id) + '">' + esc(loc(item.name)) + "</h3>" +
+                '<p class="dish-card__alt" lang="' + alt + '" dir="' + (alt === "ar" ? "rtl" : "ltr") + '">' + esc(loc(item.name, alt)) + "</p>" +
+                (item.desc ? '<p class="dish-card__desc">' + esc(loc(item.desc)) + "</p>" : "") +
+                '<div class="dish-card__meta">' + price +
+                  '<a class="btn btn--brand btn--sm" data-wa="dish" data-dish="' + esc(item.id) + '" aria-label="' + esc(t("menu.orderAria", { dish: loc(item.name) })) + '">' +
+                    '<svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>' + esc(t("menu.order")) + "</span>" +
+                  "</a>" +
+                "</div>" +
+              "</div>" +
+            "</div>" +
+          "</article>" +
+        "</li>"
+      );
+    }).join("");
+  }
+
   function renderMenu() {
     if (!gridEl) return;
     var items = filteredItems();
+    var cards = gridEl.dataset.layout === "cards";
     var alt = other(state.lang);
-    gridEl.innerHTML = items.map(function (item, i) {
+    gridEl.innerHTML = cards ? menuCardsHtml(items) : items.map(function (item, i) {
       var price = pricesVisible() && item.price != null ? formatPrice(item.price) : "";
       return (
         '<li class="menu-item" style="--i:' + Math.min(i, 12) + '">' +
@@ -399,6 +489,16 @@
     $$("[data-wa]", gridEl).forEach(function (el) {
       setAction(el, waUrl(el.dataset.dish), "toast.waMissing", true);
     });
+    if (cards) {
+      $$("img[data-img]", gridEl).forEach(function (img) { setImage(img, img.dataset.img, { maxW: 1200 }); });
+      $$(".dish-card", gridEl).forEach(bindTilt);
+      observeCards();
+    }
+    var activeEl = $("#menuActive");
+    if (activeEl) {
+      activeEl.hidden = state.category === "all";
+      $("#menuActiveLabel").textContent = t("mp.activeCat", { cat: categoryLabel(state.category) });
+    }
     requestLayoutRefresh();
   }
 
@@ -409,6 +509,13 @@
       state.category = btn.dataset.cat;
       $$("[data-cat]", catsEl).forEach(function (b) { b.setAttribute("aria-pressed", String(b === btn)); });
       renderMenu();
+      revealActiveCategory();
+      // Menu page: if the visitor has scrolled past the start of the results, bring them back to it.
+      // Instant on purpose: a smooth scroll would be cut short by the ScrollTrigger refresh that follows.
+      var start = $("#menuResultsStart");
+      if (start && start.getBoundingClientRect().top < 0) {
+        try { start.scrollIntoView({ behavior: "instant", block: "start" }); } catch (err) { start.scrollIntoView(true); }
+      }
     });
   }
   if (searchEl) {
@@ -418,6 +525,8 @@
     });
   }
   if (clearEl) clearEl.addEventListener("click", function () { searchEl.value = ""; state.query = ""; renderMenu(); searchEl.focus(); });
+  var activeClear = $("#menuActiveClear");
+  if (activeClear) activeClear.addEventListener("click", function () { setCategory("all"); revealActiveCategory(); });
   var resetEl = $("#menuReset");
   if (resetEl) resetEl.addEventListener("click", function () {
     searchEl.value = ""; state.query = ""; state.category = "all";
@@ -512,7 +621,7 @@
   /* ---------------------------------------------------------------------
      Section 06 — Gallery + lightbox
      --------------------------------------------------------------------- */
-  var galleryEl = $("#galleryGrid");
+  var galleryEl = galleryHost;
   function renderGallery() {
     if (!galleryEl) return;
     galleryEl.innerHTML = gallery.map(function (g, i) {
@@ -655,6 +764,26 @@
       }).join("");
     }
 
+    // Menu page: unconfigured details are hidden rather than shown as "to be announced"
+    var hideHost = $("[data-hide-missing-info]");
+    if (hideHost) {
+      var have = {
+        address: !!address,
+        hours: !!(config.openingHours || []).length,
+        phone: !!phone,
+        whatsapp: !!wa
+      };
+      var any = false;
+      $$("[data-info-cell]", hideHost).forEach(function (cell) {
+        var ok = !!have[cell.dataset.infoCell];
+        cell.hidden = !ok;
+        any = any || ok;
+      });
+      hideHost.hidden = !any;
+      var pending = $("#orderPending");
+      if (pending) pending.hidden = !!(wa || phone || config.googleMapsUrl);
+    }
+
     var rights = $("#footerRights");
     if (rights) rights.textContent = t("footer.rights", { year: new Date().getFullYear() });
 
@@ -695,6 +824,22 @@
     var social = config.social || {};
     var same = Object.keys(social).map(function (k) { return social[k]; }).filter(function (u) { return /^https?:\/\//.test(u || ""); });
     if (same.length) data.sameAs = same;
+    if (page === "menu") {
+      // Only dishes the restaurant has verified (placeholder: false) are published as structured data
+      var verified = menuItems.filter(function (i) { return !i.placeholder; });
+      var sections = categories.filter(function (c) { return c.id !== "all"; }).map(function (c) {
+        return {
+          "@type": "MenuSection",
+          name: loc(c.label, "en"),
+          hasMenuItem: verified.filter(function (i) { return i.category === c.id; }).map(function (i) {
+            var entry = { "@type": "MenuItem", name: i.name.en, description: (i.desc && i.desc.en) || undefined };
+            if (i.price != null) entry.offers = { "@type": "Offer", price: String(i.price), priceCurrency: config.currency || "SAR" };
+            return entry;
+          })
+        };
+      }).filter(function (sec) { return sec.hasMenuItem.length; });
+      if (sections.length) data.hasMenu = { "@type": "Menu", name: "Naja Restaurant Menu", hasMenuSection: sections };
+    }
     el.textContent = JSON.stringify(data, null, 2);
   }
 
@@ -714,7 +859,7 @@
      Header, navigation, mobile menu
      --------------------------------------------------------------------- */
   var header = $("#siteHeader"), toggle = $("#menuToggle"), mobileNav = $("#mobileNav");
-  var hero = $("#home"), bar = $("#actionBar");
+  var hero = $("#home") || $(".hero"), bar = $("#actionBar");
 
   var progressEl = $("#scrollProgress");
   function onScroll() {
@@ -821,6 +966,7 @@
     if (!dict[lang]) lang = "ar";
     var anim = animations();
     var scrollY = window.scrollY || window.pageYOffset;
+    var anchor = findAnchor();
     if (anim && anim.teardown) anim.teardown();
     state.lang = lang;
     renderAll();
@@ -835,6 +981,30 @@
     if (anim && anim.init) anim.init();
     // Keep the visitor where they were (pin spacing is rebuilt above)
     try { window.scrollTo({ top: scrollY, behavior: "instant" }); } catch (e) { window.scrollTo(0, scrollY); }
+    if (anchor) {
+      // Re-align now, and again once the other language's font and ScrollTrigger have settled
+      var realign = function () {
+        var again = document.querySelector('[data-anchor="' + anchor.id + '"]');
+        if (!again) return;
+        var delta = again.getBoundingClientRect().top - anchor.top;
+        if (Math.abs(delta) > 1) window.scrollBy(0, delta);
+      };
+      realign();
+      requestAnimationFrame(realign);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(realign);
+      setTimeout(realign, 320);
+    }
+  }
+
+  // The first anchored element (dish card or section) whose top edge is visible below the header
+  function findAnchor() {
+    var minTop = header ? header.getBoundingClientRect().bottom : 0;
+    var best = null;
+    $$("[data-anchor]").forEach(function (el) {
+      var top = el.getBoundingClientRect().top;
+      if (top >= minTop - 2 && top < window.innerHeight && (!best || top < best.top)) best = { id: el.dataset.anchor, top: top };
+    });
+    return best;
   }
 
   $$("[data-lang-toggle]").forEach(function (btn) {

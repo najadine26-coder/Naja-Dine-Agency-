@@ -38,13 +38,15 @@ Opening `index.html` straight from disk (`file://`) also works. A local server i
 
 ```
 naja-restaurant/
-├── index.html              Page markup: header, 6 sections, footer, lightbox
-├── css/style.css           All styles (logical properties → genuine RTL/LTR mirroring)
+├── index.html              Homepage markup: header, 8 sections, footer, lightbox
+├── menu.html               Menu page markup (see "Menu page" below)
+├── css/style.css           All shared styles (logical properties → genuine RTL/LTR mirroring)
+├── css/menu.css            Menu-page-only styles, loaded after style.css
 ├── css/fonts.css           Self-hosted Fustat (Arabic) + Inter (English)
-├── js/config.js            ★ Business details, image library, gallery order
+├── js/config.js            ★ Business details, image library, gallery order (home + menu page)
 ├── js/menu-data.js         ★ Categories, signature dishes, menu items (sample placeholders)
 ├── js/translations.js      ★ All Arabic/English copy
-├── js/main.js              Language switching, rendering, menu filter/search, WhatsApp, lightbox
+├── js/main.js              Language switching, rendering, menu filter/search, WhatsApp, lightbox (both pages)
 ├── js/animations.js        GSAP/ScrollTrigger cinematic motion (progressive enhancement)
 ├── js/vendor/              GSAP 3.12.5 + ScrollTrigger (self-hosted, no CDN dependency)
 ├── assets/fonts/           Fustat, Inter and Kaushan Script WOFF2 files (SIL Open Font License)
@@ -71,6 +73,23 @@ naja-restaurant/
 The footer, the gold scroll-progress bar and the mobile bottom action bar support these sections.
 
 **Motion summary:** word-by-word blur reveals on headings, animated gradient text, drifting aurora glows, magnetic large buttons and the cursor spotlight (desktop), velocity-skewed marquees, pinned horizontal dishes, parallax and clip reveals. All of it switches off under `prefers-reduced-motion`.
+
+## Menu page (`menu.html`)
+
+The header, footer, language switcher, WhatsApp logic, lightbox and design tokens are shared with the homepage. The "Menu" link in both pages' navigation opens it. It has six parts:
+
+1. **Menu hero** (`#menu-hero`): "قائمة الطعام" / "Explore Our Menu", a View Dishes button and scroll parallax.
+2. **Sticky category bar** (`#menu-categories`): stays under the header while you browse the dishes and scrolls sideways on phones. It's built from `najaMenuCategories` with item counts, and **categories with no items are hidden automatically**, so the bar only shows what's really on the menu.
+3. **Search & filters** (`#menu-search`): the same Arabic-tolerant search as the homepage, a live result count, and a removable "Category: …" chip.
+4. **Food menu grid** (`#menu-dishes`): cards with photo, Arabic and English names, description, price and a WhatsApp Order button. It shows 1 column on small phones, 2 from 560px, 3 from 1024px and 4 from 1440px. Sample dishes carry a "Sample dish" badge and "Sample price" note.
+5. **Featured gallery** (`#featured-gallery`): six images from `najaMenuGallery` in `js/config.js`, with the shared lightbox.
+6. **Order** (`#order`): WhatsApp, Call and Directions buttons plus address, hours, phone and WhatsApp details. Unlike the homepage, anything not configured is **hidden** instead of disabled. If nothing is configured, a "details will be published soon" note shows.
+
+**Dish photos:** give a menu item `image: "<key from najaImages>"` only when that photo really shows the dish. Items without one show a branded "Photo coming soon" frame. Right now only the grills, the classic burger, the pizza and the steak reuse library photos, and those are still Unsplash placeholders.
+
+**Structured data:** the menu page publishes the same Restaurant JSON-LD as the homepage. Menu items are added as `hasMenu` only once they're marked `placeholder: false`, so no sample dish or price is ever published as real.
+
+**Language:** switching language keeps the same dish in view. Links between the two pages carry `?lang=en`, so the choice survives even when localStorage is blocked.
 
 ## ⚠️ Before launch: details still to be supplied
 
@@ -140,4 +159,4 @@ All image URLs live in **`js/config.js → najaImages`**. They're Unsplash place
 ## Notes
 
 - GSAP is free for this use under its standard license (https://gsap.com/standard-license).
-- This task covers the homepage only. Separate About / Menu / Contact pages aren't included yet.
+- Pages so far: Home (`index.html`) and Menu (`menu.html`). Separate About / Contact pages aren't included yet.

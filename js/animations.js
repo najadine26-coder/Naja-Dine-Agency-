@@ -23,6 +23,8 @@
   var $ = function (sel, ctx) { return (ctx || document).querySelector(sel); };
   var $$ = function (sel, ctx) { return gsap.utils.toArray((ctx || document).querySelectorAll(sel)); };
   var rtl = function () { return document.documentElement.dir === "rtl"; };
+  // Pages share this file, so only animate elements that exist on the current one
+  var has = function (sel) { return !!document.querySelector(sel); };
 
   var mm = null;
   var introPlayed = false;
@@ -34,14 +36,16 @@
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     var tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-    tl.from(".hero__img", { scale: 1.16, duration: 2.4, ease: "power2.out", clearProps: "transform" }, 0)
-      .from("[data-hero-item]", { y: 36, autoAlpha: 0, duration: 1, stagger: 0.08, clearProps: "transform,opacity,visibility" }, 0.15)
-      .from(".hero__ghost span", { yPercent: 25, autoAlpha: 0, duration: 1.6, clearProps: "all" }, 0.1)
-      .from(".hero__frame-img, .hero__frame-cap", {
+    if (has(".hero__img")) tl.from(".hero__img", { scale: 1.16, duration: 2.4, ease: "power2.out", clearProps: "transform" }, 0);
+    if (has("[data-hero-item]")) tl.from("[data-hero-item]", { y: 36, autoAlpha: 0, duration: 1, stagger: 0.08, clearProps: "transform,opacity,visibility" }, 0.15);
+    if (has(".hero__ghost span")) tl.from(".hero__ghost span", { yPercent: 25, autoAlpha: 0, duration: 1.6, clearProps: "all" }, 0.1);
+    if (has(".hero__frame-img")) {
+      tl.from(".hero__frame-img, .hero__frame-cap", {
         autoAlpha: 0, rotateY: rtl() ? 22 : -22, z: -160, y: 40,
         transformPerspective: 1200, duration: 1.5, stagger: 0.1, clearProps: "all"
-      }, 0.35)
-      .from(".site-header__bar > *", { y: -14, autoAlpha: 0, duration: 0.8, stagger: 0.06, clearProps: "all" }, 0.2);
+      }, 0.35);
+    }
+    tl.from(".site-header__bar > *", { y: -14, autoAlpha: 0, duration: 0.8, stagger: 0.06, clearProps: "all" }, 0.2);
   }
 
   function restoreSplits(list) {
@@ -80,10 +84,10 @@
       });
       heroTl
         .to(".hero__media", { yPercent: c.desktop ? 14 : 8, scale: 1.08, ease: "none" }, 0)
-        .to(".hero__content", { y: c.desktop ? -120 : -60, autoAlpha: 0.1, ease: "none" }, 0)
-        .to(".hero__ghost", { yPercent: -35, ease: "none" }, 0)
-        .to(".hero__scroll", { autoAlpha: 0, ease: "none", duration: 0.25 }, 0);
-      if (c.desktop) {
+        .to(".hero__content", { y: c.desktop ? -120 : -60, autoAlpha: 0.1, ease: "none" }, 0);
+      if (has(".hero__ghost")) heroTl.to(".hero__ghost", { yPercent: -35, ease: "none" }, 0);
+      if (has(".hero__scroll")) heroTl.to(".hero__scroll", { autoAlpha: 0, ease: "none", duration: 0.25 }, 0);
+      if (c.desktop && has(".hero__frame")) {
         heroTl.to(".hero__frame", {
           y: -200, rotateY: -10 * dir, rotateX: 6, z: 80,
           transformPerspective: 1200, ease: "none"
@@ -186,7 +190,7 @@
       /* --- 02 SIGNATURE: pinned horizontal showcase on desktop --- */
       var section = $(".signature");
       var track = $("#signatureTrack");
-      var cards = $$(".dish-card", track);
+      var cards = track ? $$(".dish-card", track) : []; // without a track, $$ would match every card on the page
 
       if (c.desktop && section && track && cards.length) {
         section.classList.add("is-horizontal");
@@ -265,7 +269,7 @@
             scrollTrigger: { trigger: ".experience", start: "top bottom", end: "bottom top", scrub: true }
           });
       }
-      if (c.desktop) {
+      if (c.desktop && reveal) {
         gsap.fromTo(".experience__outline", { y: 50, x: 0 }, {
           y: -50, ease: "none",
           scrollTrigger: { trigger: ".experience", start: "top bottom", end: "bottom top", scrub: true }

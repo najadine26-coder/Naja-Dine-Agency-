@@ -7,6 +7,9 @@
 
    price: number in SAR, or null to hide the price for that item.
    category: one of the ids in najaMenuCategories (except "all").
+   image: optional key from najaImages. Only set it when that photo really
+   shows the dish; items without one get a branded "photo coming soon" frame
+   on the Menu page. Categories with no items are hidden from the filters.
    ========================================================================= */
 
 /* `image` = illustrative preview shown when hovering a category (keys from najaImages). */
@@ -15,7 +18,8 @@ window.najaMenuCategories = [
   { id: "main", image: "presentation", label: { ar: "الأطباق الرئيسية", en: "Main Course" } },
   { id: "rice", image: "plated", label: { ar: "الأرز", en: "Rice" } },
   { id: "grills", image: "grill", label: { ar: "المشويات", en: "Grills" } },
-  { id: "fastfood", image: "burger", label: { ar: "الوجبات السريعة", en: "Fast Food" } },
+  { id: "burgers", image: "burger", label: { ar: "البرجر", en: "Burgers" } },
+  { id: "fastfood", image: "pizza", label: { ar: "الوجبات السريعة", en: "Fast Food" } },
   { id: "pasta", image: "pizza", label: { ar: "الباستا", en: "Pasta" } },
   { id: "beverages", image: "interior", label: { ar: "المشروبات", en: "Beverages" } },
   { id: "desserts", image: "hero", label: { ar: "الحلويات", en: "Desserts" } }
@@ -75,7 +79,7 @@ window.najaMenuItems = [
   { id: "m1", category: "main", price: 68, placeholder: true,
     name: { ar: "دجاج مشوي بالأعشاب", en: "Herb Roasted Chicken" },
     desc: { ar: "نصف دجاجة متبلة بالأعشاب مع خضار مشوية.", en: "Half chicken marinated in herbs with roasted vegetables." } },
-  { id: "m2", category: "main", price: 95, placeholder: true,
+  { id: "m2", category: "main", price: 95, placeholder: true, image: "presentation",
     name: { ar: "ستيك لحم مع صلصة الفلفل", en: "Beef Steak, Pepper Sauce" },
     desc: { ar: "شريحة لحم مشوية حسب الرغبة مع بطاطس.", en: "Grilled to your preference, served with potatoes." } },
   { id: "m3", category: "main", price: 79, placeholder: true,
@@ -94,24 +98,26 @@ window.najaMenuItems = [
     desc: { ar: "أرز بسمتي مع خضار موسمية.", en: "Basmati rice with seasonal vegetables." } },
 
   // Grills
-  { id: "g1", category: "grills", price: 62, placeholder: true,
+  { id: "g1", category: "grills", price: 62, placeholder: true, image: "grill",
     name: { ar: "شيش طاووق", en: "Shish Tawook" },
     desc: { ar: "مكعبات دجاج متبلة مشوية على الفحم.", en: "Marinated chicken cubes grilled over charcoal." } },
-  { id: "g2", category: "grills", price: 69, placeholder: true,
+  { id: "g2", category: "grills", price: 69, placeholder: true, image: "grill",
     name: { ar: "كباب لحم", en: "Lamb Kebab" },
     desc: { ar: "لحم مفروم متبل على أسياخ مع خبز.", en: "Seasoned minced lamb skewers with bread." } },
-  { id: "g3", category: "grills", price: 89, placeholder: true,
+  { id: "g3", category: "grills", price: 89, placeholder: true, image: "grill",
     name: { ar: "مشاوي مشكلة", en: "Mixed Grill" },
     desc: { ar: "تشكيلة من الكباب والشيش والتكة.", en: "Kebab, shish and tikka selection." } },
 
-  // Fast Food
-  { id: "f1", category: "fastfood", price: 42, placeholder: true,
+  // Burgers
+  { id: "f1", category: "burgers", price: 42, placeholder: true, image: "burger",
     name: { ar: "برجر كلاسيكي", en: "Classic Burger" },
     desc: { ar: "لحم، جبن، خس، طماطم وصلصة خاصة.", en: "Beef, cheese, lettuce, tomato and house sauce." } },
-  { id: "f2", category: "fastfood", price: 38, placeholder: true,
+  { id: "f2", category: "burgers", price: 38, placeholder: true,
     name: { ar: "برجر دجاج مقرمش", en: "Crispy Chicken Burger" },
     desc: { ar: "صدر دجاج مقرمش مع صلصة المايونيز.", en: "Crispy chicken breast with mayo sauce." } },
-  { id: "f3", category: "fastfood", price: 48, placeholder: true,
+
+  // Fast Food
+  { id: "f3", category: "fastfood", price: 48, placeholder: true, image: "pizza",
     name: { ar: "بيتزا مارغريتا", en: "Margherita Pizza" },
     desc: { ar: "صلصة طماطم وموزاريلا وريحان.", en: "Tomato sauce, mozzarella and basil." } },
   { id: "f4", category: "fastfood", price: 18, placeholder: true,
