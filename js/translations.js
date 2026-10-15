@@ -138,8 +138,8 @@ window.najaTranslations = {
 
     "wa.order": "مرحباً {name}،\nأرغب بطلب:\n• {dish} × {qty}\n{priceLine}\nأرجو تأكيد توفر الطلب والمبلغ الإجمالي النهائي. شكراً لكم.",
     "wa.priceLine": "السعر المعروض: {price} ر.س للطبق",
-    "mp.metaTitle": "قائمة الطعام | مطعم نجا في الرياض",
-    "mp.metaDesc": "تصفّح قائمة طعام مطعم نجا في الرياض: الأطباق الرئيسية والأرز والمشويات والبرجر والوجبات السريعة والباستا والمشروبات والحلويات، واطلب طبقك عبر واتساب.",
+    "mp.metaTitle": "منيو مطعم نجا في الرياض | مشويات وبرجر وأرز وحلويات",
+    "mp.metaDesc": "اكتشف منيو مطعم نجا في الرياض: مشويات، أرز، برجر، وجبات سريعة، باستا، مشروبات وحلويات. ابحث عن طبقك بالعربية أو الإنجليزية واطلبه بسهولة عبر واتساب.",
     "mp.heroEyebrow": "مطعم نجا · الرياض",
     "mp.heroTitle": "قائمة الطعام",
     "mp.heroCopy": "من المشويات والأرز إلى البرجر والباستا والحلويات. تصفّح الأقسام، اختر طبقك، ثم اطلبه عبر واتساب.",
@@ -292,8 +292,8 @@ window.najaTranslations = {
 
     "wa.order": "Hello {name},\nI'd like to order:\n• {dish} × {qty}\n{priceLine}\nPlease confirm availability and the final total. Thank you.",
     "wa.priceLine": "Displayed price: SAR {price} each",
-    "mp.metaTitle": "Menu | Naja Restaurant, Riyadh",
-    "mp.metaDesc": "Browse the Naja Restaurant menu in Riyadh: main courses, rice, grills, burgers, fast food, pasta, beverages and desserts, and order your dish on WhatsApp.",
+    "mp.metaTitle": "Naja Restaurant Menu, Riyadh | Grills, Burgers & More",
+    "mp.metaDesc": "Explore the Naja Restaurant menu in Riyadh: grills, rice, burgers, fast food, pasta, drinks and desserts. Find your dish and order easily on WhatsApp.",
     "mp.heroEyebrow": "Naja Restaurant · Riyadh",
     "mp.heroTitle": "Explore Our Menu",
     "mp.heroCopy": "From grills and rice to burgers, pasta and desserts. Browse the categories, pick your dish and order it on WhatsApp.",

@@ -248,6 +248,9 @@
     if (ogTitle) ogTitle.setAttribute("content", t(titleKey));
     var ogDesc = $('meta[property="og:description"]');
     if (ogDesc && document.body.dataset.metaDesc) ogDesc.setAttribute("content", t(descKey));
+    var twTitle = $('meta[name="twitter:title"]'), twDesc = $('meta[name="twitter:description"]');
+    if (twTitle) twTitle.setAttribute("content", t(titleKey));
+    if (twDesc) twDesc.setAttribute("content", t(descKey));
     var ogLocale = $('meta[property="og:locale"]');
     if (ogLocale) ogLocale.setAttribute("content", lang === "ar" ? "ar_SA" : "en_US");
     var ogAlt = $('meta[property="og:locale:alternate"]');
