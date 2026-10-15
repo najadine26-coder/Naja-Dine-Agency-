@@ -24,7 +24,7 @@ window.restaurantConfig = {
 
   // ---- Contact details (NOT YET SUPPLIED — keep empty until verified) ----
   // Phone in international format, digits only or with +, e.g. "+9665XXXXXXXX"
-  phone: "",
+  phone: "+966583815633", // same number as WhatsApp (confirmed by the restaurant)
   // WhatsApp number in international format WITHOUT "+" or spaces, e.g. "9665XXXXXXXX"
   whatsapp: "966583815633", // +966 58 381 5633 (supplied by the restaurant)
   // Street address in both languages
