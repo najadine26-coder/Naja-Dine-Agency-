@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="ar" dir="rtl" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>مطعم نجا | قائمة متنوعة في الرياض</title>
+  <meta name="description" content="مطعم نجا في الرياض — قائمة متنوعة من المشويات والأرز والوجبات السريعة والباستا والحلويات. تصفح القائمة واطلب بسهولة عبر واتساب.">
+  <meta name="theme-color" content="#121212">
+  <meta name="color-scheme" content="dark">
+
+  <!-- Open Graph / social (replace og:image with the restaurant's own photo before launch) -->
+  <meta property="og:type" content="restaurant">
+  <meta property="og:site_name" content="Naja Restaurant | مطعم نجا">
+  <meta property="og:title" content="مطعم نجا | قائمة متنوعة في الرياض">
+  <meta property="og:description" content="قائمة متنوعة من المشويات والأرز والوجبات السريعة والحلويات في الرياض. اطلب بسهولة عبر واتساب.">
+  <meta property="og:locale" content="ar_SA">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1200&h=630&q=80">
+  <meta property="og:image:alt" content="طبق طعام ملون مقدم بأناقة">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23EE1D23'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-style='italic' font-weight='700' font-size='38' fill='%23FFFFFF' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="preload" as="image" fetchpriority="high"
+        imagesrcset="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=85 800w, https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1200&q=85 1200w, https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1600&q=85 1600w, https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=2200&q=85 2200w" imagesizes="100vw">
+  <!-- Self-hosted fonts: Fustat (Arabic) + Inter (English) -->
+  <link rel="preload" href="assets/fonts/fustat-arabic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
+
+  <!-- Restaurant structured data: verified values only. main.js extends it from js/config.js. -->
+  <script type="application/ld+json" id="jsonld">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Naja Restaurant",
+    "alternateName": "مطعم نجا",
+    "slogan": "Feel Fresh",
+    "servesCuisine": "Mixed Menu",
+    "currenciesAccepted": "SAR",
+    "address": { "@type": "PostalAddress", "addressLocality": "Riyadh", "addressCountry": "SA" }
+  }
+  </script>
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
+  <a class="skip-link" href="#main" data-i18n="skip">تخطَّ إلى المحتوى</a>
+
+  <!-- =============================== HEADER =============================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container site-header__bar">
+      <a class="wordmark" href="#home" data-i18n-attr="aria-label:brand.home" aria-label="مطعم نجا — الصفحة الرئيسية">
+        <span class="wordmark__latin" lang="en">Naja</span>
+        <span class="wordmark__rule" aria-hidden="true"></span>
+        <span class="wordmark__arabic" lang="ar">نجا</span>
+      </a>
+
+      <nav class="primary-nav" data-i18n-attr="aria-label:nav.label" aria-label="التنقل الرئيسي">
+        <ul class="primary-nav__list">
+          <li><a href="#home" data-i18n="nav.home">الرئيسية</a></li>
+          <li><a href="#menu" data-i18n="nav.menu">القائمة</a></li>
+          <li><a href="#experience" data-i18n="nav.experience">التجربة</a></li>
+          <li><a href="#gallery" data-i18n="nav.gallery">المعرض</a></li>
+          <li><a href="#visit" data-i18n="nav.contact">تواصل معنا</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <button type="button" class="lang-switch" data-lang-toggle data-i18n-attr="aria-label:lang.aria" aria-label="Switch to English">
+          <span data-i18n="lang.switch">EN</span>
+        </button>
+        <a class="btn btn--brand btn--sm site-header__wa" data-wa="general">
+          <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+          <span data-i18n="cta.whatsapp">اطلب عبر واتساب</span>
+        </a>
+        <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileNav" data-i18n-attr="aria-label:nav.open" aria-label="فتح القائمة">
+          <span class="menu-toggle__bar"></span><span class="menu-toggle__bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile navigation panel -->
+  <div class="mobile-nav" id="mobileNav" hidden>
+    <nav class="container mobile-nav__inner" data-i18n-attr="aria-label:nav.label" aria-label="التنقل الرئيسي">
+      <ol class="mobile-nav__list">
+        <li><a href="#home"><span class="mobile-nav__num">01</span><span data-i18n="nav.home">الرئيسية</span></a></li>
+        <li><a href="#menu"><span class="mobile-nav__num">02</span><span data-i18n="nav.menu">القائمة</span></a></li>
+        <li><a href="#experience"><span class="mobile-nav__num">03</span><span data-i18n="nav.experience">التجربة</span></a></li>
+        <li><a href="#gallery"><span class="mobile-nav__num">04</span><span data-i18n="nav.gallery">المعرض</span></a></li>
+        <li><a href="#how-to-order"><span class="mobile-nav__num">05</span><span data-i18n="nav.order">طريقة الطلب</span></a></li>
+        <li><a href="#visit"><span class="mobile-nav__num">06</span><span data-i18n="nav.contact">تواصل معنا</span></a></li>
+      </ol>
+      <div class="mobile-nav__foot">
+        <button type="button" class="btn btn--ghost" data-lang-toggle>
+          <span data-i18n="lang.switchFull">English</span>
+        </button>
+        <a class="btn btn--brand" data-wa="general">
+          <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+          <span data-i18n="cta.whatsapp">اطلب عبر واتساب</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+
+  <main id="main">
+    <!-- ======================= 01 — CINEMATIC HERO ======================= -->
+    <section class="hero" id="home" aria-labelledby="heroTitle" data-bg="#121212">
+      <div class="hero__media img-frame">
+        <img class="hero__img" data-img="hero" data-img-sizes="100vw"
+             src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=2200&q=85"
+             srcset="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=85 800w, https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1200&q=85 1200w, https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1600&q=85 1600w, https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=2200&q=85 2200w" sizes="100vw"
+             alt="طبق طعام ملون وطازج مقدم بأناقة" fetchpriority="high" decoding="async" width="2200" height="1467">
+      </div>
+      <div class="hero__shade" aria-hidden="true"></div>
+      <div class="aurora aurora--hero" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="hero__spot" aria-hidden="true"></div>
+      <div class="hero__ghost" aria-hidden="true"><span>Naja</span></div>
+
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="eyebrow hero__eyebrow" data-hero-item>
+            <span class="eyebrow__line" aria-hidden="true"></span>
+            <span data-i18n="hero.eyebrow">الرياض، المملكة العربية السعودية</span>
+          </p>
+          <h1 class="hero__title text-gradient-hero" id="heroTitle" data-hero-item data-i18n="hero.title">اكتشف وجبتك المفضلة</h1>
+          <p class="hero__alt" data-hero-item data-i18n-alt="hero.title" lang="en" dir="ltr">Discover Your Next Favorite Meal</p>
+          <p class="tagline" data-hero-item lang="en">
+            <span class="tagline__text">Feel Fresh</span>
+            <svg class="tagline__swoosh" aria-hidden="true"><use href="#i-swoosh"/></svg>
+          </p>
+          <p class="hero__copy" data-hero-item data-i18n="hero.copy">قائمة متنوعة تجمع المشويات والأرز والوجبات السريعة والحلويات — في مكان واحد في قلب الرياض.</p>
+          <div class="hero__ctas" data-hero-item>
+            <a class="btn btn--brand btn--lg" data-wa="general">
+              <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              <span data-i18n="cta.whatsapp">اطلب عبر واتساب</span>
+            </a>
+            <a class="btn btn--ghost btn--lg" href="#menu">
+              <span data-i18n="cta.explore">استكشف قائمتنا</span>
+              <svg class="icon icon--dir" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <figure class="hero__frame" aria-hidden="true">
+          <div class="hero__frame-img img-frame">
+            <img data-img="logoSign" data-img-decorative alt="" loading="eager" decoding="async" width="593" height="629">
+          </div>
+          <figcaption class="hero__frame-cap">Naja · Feel Fresh</figcaption>
+        </figure>
+      </div>
+
+      <a class="hero__scroll" href="#signature">
+        <span data-i18n="hero.scroll">مرّر للأسفل</span>
+        <span class="hero__scroll-line" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- Animated category marquee (decorative) -->
+    <div class="marquee" aria-hidden="true" data-marquee>
+      <div class="marquee__track" id="marqueeTop"></div>
+    </div>
+
+    <!-- ======================= 02 — SIGNATURE DISHES ======================= -->
+    <section class="signature" id="signature" aria-labelledby="sigTitle" data-bg="#141414">
+      <div class="signature__pin">
+        <div class="signature__track" id="signatureTrack">
+          <header class="signature__intro section-head">
+            <p class="section-num" aria-hidden="true">02 <span>/ 08</span></p>
+            <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span><span data-i18n="sig.eyebrow">الأطباق المميزة</span></p>
+            <h2 class="section-title" id="sigTitle" data-reveal-heading data-i18n="sig.title">مختاراتنا المميزة</h2>
+            <p class="section-copy" data-i18n="sig.copy">أطباق تمثّل روح قائمتنا المتنوعة.</p>
+            <p class="signature__hint" aria-hidden="true">
+              <span data-i18n="sig.hint">مرّر لاستكشاف الأطباق</span>
+              <svg class="icon icon--dir" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </p>
+          </header>
+          <!-- Dish cards are rendered from js/menu-data.js (najaSignatureDishes) -->
+        </div>
+        <div class="signature__progress" aria-hidden="true"><span id="signatureProgress"></span></div>
+      </div>
+    </section>
+
+    <!-- ======================= 03 — BROWSE BY CATEGORY ======================= -->
+    <section class="cats section" id="categories" aria-labelledby="catsTitle" data-bg="#140f0f">
+      <div class="aurora aurora--soft" aria-hidden="true"><span></span><span></span></div>
+      <div class="container">
+        <header class="section-head section-head--split">
+          <div>
+            <p class="section-num" aria-hidden="true">03 <span>/ 08</span></p>
+            <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span><span data-i18n="cats.eyebrow">تصفّح حسب الذوق</span></p>
+            <h2 class="section-title" id="catsTitle" data-reveal-heading data-i18n="cats.title">لكل ذوقٍ قسم</h2>
+          </div>
+          <p class="section-copy" data-i18n="cats.copy">اختر قسماً لعرض أطباقه مباشرة في القائمة.</p>
+        </header>
+        <ol class="cat-list" id="catList"><!-- rendered from najaMenuCategories --></ol>
+      </div>
+      <div class="cat-preview img-frame" id="catPreview" aria-hidden="true"><img alt="" decoding="async"></div>
+    </section>
+
+    <!-- ======================= 04 — EXPLORE THE MENU ======================= -->
+    <section class="menu section" id="menu" aria-labelledby="menuTitle" data-bg="#121212">
+      <div class="container">
+        <header class="section-head section-head--split">
+          <div>
+            <p class="section-num" aria-hidden="true">04 <span>/ 08</span></p>
+            <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span><span data-i18n="menu.eyebrow">القائمة</span></p>
+            <h2 class="section-title" id="menuTitle" data-reveal-heading data-i18n="menu.title">استكشف القائمة</h2>
+          </div>
+          <div>
+            <p class="section-copy" data-i18n="menu.copy">تصفّح الأقسام أو ابحث عن طبقك، ثم اطلبه مباشرة عبر واتساب.</p>
+            <p class="notice" data-i18n="menu.notice">قائمة تجريبية — ستُحدَّث الأصناف والأسعار بعد اعتمادها من المطعم.</p>
+          </div>
+        </header>
+
+        <div class="menu__controls" data-reveal>
+          <div class="menu__search">
+            <label class="visually-hidden" for="menuSearch" data-i18n="menu.searchLabel">ابحث في القائمة</label>
+            <svg class="icon menu__search-icon" aria-hidden="true"><use href="#i-search"/></svg>
+            <input type="search" id="menuSearch" autocomplete="off" enterkeyhint="search"
+                   data-i18n-attr="placeholder:menu.searchPlaceholder" placeholder="ابحث عن طبق…">
+            <button type="button" class="menu__search-clear" id="menuSearchClear" hidden data-i18n-attr="aria-label:menu.clear" aria-label="مسح البحث">
+              <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+            </button>
+          </div>
+          <div class="menu__cats" id="menuCats" role="group" data-i18n-attr="aria-label:menu.categories" aria-label="أقسام القائمة">
+            <!-- rendered from najaMenuCategories -->
+          </div>
+        </div>
+
+        <p class="menu__count" id="menuCount" role="status" aria-live="polite"></p>
+
+        <ul class="menu-grid" id="menuGrid">
+          <!-- rendered from najaMenuItems -->
+        </ul>
+
+        <div class="menu__empty" id="menuEmpty" hidden>
+          <span class="menu__empty-mark" aria-hidden="true"></span>
+          <h3 data-i18n="menu.emptyTitle">لا توجد نتائج</h3>
+          <p data-i18n="menu.emptyText">لم نجد أطباقاً تطابق بحثك.</p>
+          <button type="button" class="btn btn--ghost" id="menuReset" data-i18n="menu.reset">عرض كل الأصناف</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= 04 — THE NAJA EXPERIENCE ======================= -->
+    <section class="experience section" id="experience" aria-labelledby="expTitle" data-bg="#1a1a1a">
+      <div class="container experience__grid">
+        <div class="experience__media">
+          <div class="experience__reveal img-frame">
+            <img data-img="interior" data-img-sizes="(min-width: 1024px) 55vw, 100vw" alt="صالة مطعم بإضاءة دافئة وطاولات مُعدّة" loading="lazy" decoding="async" width="1600" height="1067">
+          </div>
+          <span class="experience__outline" aria-hidden="true"></span>
+        </div>
+
+        <div class="experience__content">
+          <p class="section-num" aria-hidden="true">05 <span>/ 08</span></p>
+          <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span><span data-i18n="exp.eyebrow">تجربة نجا</span></p>
+          <h2 class="section-title section-title--xl text-gradient" id="expTitle" data-reveal-heading data-i18n="exp.title">أكثر من مجرد وجبة، إنها تجربة</h2>
+          <p class="experience__alt" data-i18n-alt="exp.title" lang="en" dir="ltr">More Than a Meal, An Experience</p>
+          <span class="accent-rule" aria-hidden="true"></span>
+          <p class="section-copy" data-reveal data-i18n="exp.copy">في نجا نؤمن بأن الوجبة الجيدة تبدأ من المائدة وتمتد إلى اللحظات التي تُشاركها. قائمة متنوعة تناسب كل الأذواق، في أجواء مريحة تجمع العائلة والأصدقاء.</p>
+          <p class="section-copy section-copy--muted" data-reveal data-i18n="exp.copy2">سواء زرتنا أو طلبت عبر واتساب، نسعى أن تكون كل تفاصيل طلبك واضحة وسهلة.</p>
+
+          <ul class="highlights">
+            <li class="highlight" data-reveal>
+              <span class="highlight__num" aria-hidden="true">I</span>
+              <div><h3 data-i18n="exp.h1Title">قائمة لكل الأذواق</h3><p data-i18n="exp.h1Text">من المشويات والأرز إلى الباستا والحلويات.</p></div>
+            </li>
+            <li class="highlight" data-reveal>
+              <span class="highlight__num" aria-hidden="true">II</span>
+              <div><h3 data-i18n="exp.h2Title">طلب سهل عبر واتساب</h3><p data-i18n="exp.h2Text">اختر طبقك وأرسل طلبك برسالة واحدة.</p></div>
+            </li>
+            <li class="highlight" data-reveal>
+              <span class="highlight__num" aria-hidden="true">III</span>
+              <div><h3 data-i18n="exp.h3Title">في الرياض</h3><p data-i18n="exp.h3Text">وجهتك القريبة لوجبة تستمتع بها.</p></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cinematic interlude -->
+    <section class="banner" aria-labelledby="bannerQuote" data-bg="#0b0b0b">
+      <div class="banner__media img-frame">
+        <img data-img="grill" data-img-sizes="100vw" alt="أسياخ لحم مشوية على الفحم" loading="lazy" decoding="async" width="1600" height="1067">
+      </div>
+      <div class="banner__shade" aria-hidden="true"></div>
+      <div class="container banner__inner">
+        <span class="banner__mark" aria-hidden="true">“</span>
+        <p class="banner__quote text-gradient" id="bannerQuote" data-reveal-heading data-i18n="banner.quote">لكل ذوقٍ حكاية، ولكل طبقٍ لحظة.</p>
+        <p class="banner__alt" data-i18n-alt="banner.quote" lang="en" dir="ltr">Every taste has a story, every dish a moment.</p>
+        <a class="btn btn--ghost btn--lg" href="#menu" data-reveal>
+          <span data-i18n="cta.explore">استكشف قائمتنا</span>
+          <svg class="icon icon--dir" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ======================= 06 — FOOD GALLERY ======================= -->
+    <section class="gallery section" id="gallery" aria-labelledby="galTitle" data-bg="#121212">
+      <div class="container">
+        <header class="section-head section-head--split">
+          <div>
+            <p class="section-num" aria-hidden="true">06 <span>/ 08</span></p>
+            <p class="eyebrow"><span class="eyebrow__line" aria-hidden="true"></span><span data-i18n="gal.eyebrow">المعرض</span></p>
+            <h2 class="section-title" id="galTitle" data-reveal-heading data-i18n="gal.title">معرض الأطباق</h2>
+          </div>
+          <div>
+            <p class="section-copy" data-i18n="gal.copy">لمحات من المائدة. اضغط على أي صورة لتكبيرها.</p>
+            <p class="notice notice--quiet" data-i18n="gal.note">الصور توضيحية</p>
+          </div>
+        </header>
+        <ul class="gallery-grid" id="galleryGrid">
+          <!-- rendered from najaGallery -->
+        </ul>
+      </div>
+    </section>
+
+    <!-- ======================= 07 — HOW TO ORDER ======================= -->
+    <section class="steps section" id="how-to-order" aria-labelledby="stepsTitle" data-bg="#151010">
+      <div class="aurora aurora--soft aurora--alt" aria-hidden="true"><span></span><span></span></div>
+      <div class="container">
+        <header class="section-head section-head--center">
+          <p class="section-num" aria-hidden="true">07 <span>/ 08</span></p>
+          <p class="eyebrow eyebrow--center"><span class="eyebrow__line" aria-hidden="true"></span><span data-i18n="steps.eyebrow">كيف تطلب</span><span class="eyebrow__line" aria-hidden="true"></span></p>
+          <h2 class="section-title section-title--center" id="stepsTitle" data-reveal-heading data-i18n="steps.title">ثلاث خطوات إلى مائدتك</h2>
+        </header>
+        <ol class="steps__list">
+          <li class="steps__line" aria-hidden="true"><span id="stepsLine"></span></li>
+          <li class="step" data-step>
+            <span class="step__num" aria-hidden="true">01</span>
+            <h3 data-i18n="steps.s1Title">اختر طبقك</h3>
+            <p data-i18n="steps.s1Text">تصفّح القائمة واختر ما يناسب ذوقك والكمية.</p>
+          </li>
+          <li class="step" data-step>
+            <span class="step__num" aria-hidden="true">02</span>
+            <h3 data-i18n="steps.s2Title">أرسل طلبك عبر واتساب</h3>
+            <p data-i18n="steps.s2Text">رسالة جاهزة بتفاصيل طلبك بضغطة واحدة.</p>
+          </li>
+          <li class="step" data-step>
+            <span class="step__num" aria-hidden="true">03</span>
+            <h3 data-i18n="steps.s3Title">أكّد مع المطعم</h3>
+            <p data-i18n="steps.s3Text">يؤكد المطعم توفر الطلب والمبلغ الإجمالي النهائي.</p>
+          </li>
+        </ol>
+        <div class="steps__cta" data-reveal>
+          <a class="btn btn--brand btn--lg" data-wa="general">
+            <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+            <span data-i18n="cta.whatsapp">اطلب عبر واتساب</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee marquee--reverse marquee--outline" aria-hidden="true" data-marquee>
+      <div class="marquee__track" id="marqueeBottom"></div>
+    </div>
+
+    <!-- ======================= 08 — VISIT & ORDER ======================= -->
+    <section class="visit section" id="visit" aria-labelledby="visitTitle" data-bg="#0d0d0d">
+      <div class="visit__glow" aria-hidden="true"></div>
+      <div class="aurora aurora--visit" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="container">
+        <div class="visit__head">
+          <p class="section-num" aria-hidden="true">08 <span>/ 08</span></p>
+          <figure class="visit__mark">
+            <span class="visit__mark-glow" aria-hidden="true"></span>
+            <span class="visit__mark-frame img-frame">
+              <img data-img="logoSign" alt="" loading="lazy" decoding="async" width="593" height="629">
+            </span>
+            <figcaption class="tagline tagline--center" lang="en">
+              <span class="tagline__text">Feel Fresh</span>
+              <svg class="tagline__swoosh" aria-hidden="true"><use href="#i-swoosh"/></svg>
+            </figcaption>
+          </figure>
+          <p class="eyebrow eyebrow--center"><span class="eyebrow__line" aria-hidden="true"></span><span data-i18n="visit.eyebrow">زُرنا واطلب</span><span class="eyebrow__line" aria-hidden="true"></span></p>
+          <h2 class="section-title section-title--center text-gradient" id="visitTitle" data-reveal-heading data-i18n="visit.title">جاهز لوجبتك القادمة؟</h2>
+          <p class="visit__alt" data-i18n-alt="visit.title" lang="en" dir="ltr">Ready for Your Next Meal?</p>
+          <p class="section-copy section-copy--center" data-i18n="visit.copy">اطلب عبر واتساب أو اتصل بنا أو زرنا في الرياض.</p>
+
+          <div class="visit__ctas" data-reveal>
+            <a class="btn btn--brand btn--lg" data-wa="general">
+              <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              <span data-i18n="cta.whatsapp">اطلب عبر واتساب</span>
+            </a>
+            <a class="btn btn--ghost btn--lg" data-action="call">
+              <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+              <span data-i18n="visit.call">اتصل الآن</span>
+            </a>
+            <a class="btn btn--ghost btn--lg" data-action="map">
+              <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+              <span data-i18n="visit.directions">الاتجاهات على الخريطة</span>
+            </a>
+          </div>
+        </div>
+
+        <dl class="visit__info" data-reveal>
+          <div class="visit__cell">
+            <dt data-i18n="visit.address">العنوان</dt>
+            <dd id="infoAddress"></dd>
+          </div>
+          <div class="visit__cell">
+            <dt data-i18n="visit.hours">ساعات العمل</dt>
+            <dd id="infoHours"></dd>
+          </div>
+          <div class="visit__cell">
+            <dt data-i18n="visit.phone">الهاتف</dt>
+            <dd id="infoPhone"></dd>
+          </div>
+          <div class="visit__cell">
+            <dt data-i18n="visit.whatsapp">واتساب</dt>
+            <dd id="infoWhatsapp"></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <!-- =============================== FOOTER =============================== -->
+  <footer class="site-footer">
+    <div class="container site-footer__grid">
+      <div class="site-footer__brand">
+        <a class="wordmark" href="#home" data-i18n-attr="aria-label:brand.home" aria-label="مطعم نجا — الصفحة الرئيسية">
+          <span class="wordmark__latin" lang="en">Naja</span>
+          <span class="wordmark__rule" aria-hidden="true"></span>
+          <span class="wordmark__arabic" lang="ar">نجا</span>
+        </a>
+        <p class="tagline tagline--sm" lang="en"><span class="tagline__text">Feel Fresh</span><svg class="tagline__swoosh" aria-hidden="true"><use href="#i-swoosh"/></svg></p>
+        <p class="site-footer__city" data-i18n="visit.cityLine">الرياض، المملكة العربية السعودية</p>
+      </div>
+      <nav class="site-footer__col" aria-labelledby="footNavTitle">
+        <h2 class="site-footer__title" id="footNavTitle" data-i18n="footer.nav">روابط سريعة</h2>
+        <ul>
+          <li><a href="#home" data-i18n="nav.home">الرئيسية</a></li>
+          <li><a href="#menu" data-i18n="nav.menu">القائمة</a></li>
+          <li><a href="#experience" data-i18n="nav.experience">التجربة</a></li>
+          <li><a href="#gallery" data-i18n="nav.gallery">المعرض</a></li>
+          <li><a href="#visit" data-i18n="nav.contact">تواصل معنا</a></li>
+        </ul>
+      </nav>
+      <div class="site-footer__col">
+        <h2 class="site-footer__title" data-i18n="footer.contact">تواصل</h2>
+        <ul id="footerContact"></ul>
+      </div>
+      <div class="site-footer__col" id="footerSocialCol" hidden>
+        <h2 class="site-footer__title" data-i18n="footer.follow">تابعنا</h2>
+        <ul id="footerSocial"></ul>
+      </div>
+    </div>
+    <div class="container site-footer__base">
+      <p id="footerRights"></p>
+      <p class="site-footer__disclaimer" data-i18n="footer.disclaimer">الصور والأصناف والأسعار المعروضة توضيحية حالياً وقد لا تمثّل أطباق المطعم الفعلية.</p>
+      <a href="#home" class="site-footer__top">
+        <span data-i18n="footer.top">العودة للأعلى</span>
+        <svg class="icon icon--up" aria-hidden="true"><use href="#i-arrow"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Mobile bottom action bar (shown only when phone/WhatsApp are configured) -->
+  <div class="action-bar" id="actionBar" hidden>
+    <nav class="action-bar__inner" data-i18n-attr="aria-label:bar.label" aria-label="إجراءات سريعة">
+      <a class="action-bar__btn" data-action="call" id="barCall">
+        <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+        <span data-i18n="bar.call">اتصال</span>
+      </a>
+      <a class="action-bar__btn action-bar__btn--brand" data-wa="general" id="barWa">
+        <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+        <span data-i18n="cta.whatsappShort">واتساب</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" data-i18n-attr="aria-label:lb.label" aria-label="عارض الصور" hidden>
+    <div class="lightbox__backdrop" data-lb-close></div>
+    <figure class="lightbox__figure">
+      <div class="lightbox__img-wrap img-frame">
+        <img class="lightbox__img" id="lightboxImg" alt="" decoding="async">
+      </div>
+      <figcaption class="lightbox__caption">
+        <span id="lightboxCaption"></span>
+        <span class="lightbox__count" id="lightboxCount"></span>
+      </figcaption>
+    </figure>
+    <button type="button" class="lightbox__btn lightbox__close" data-lb-close data-i18n-attr="aria-label:lb.close" aria-label="إغلاق">
+      <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
+    <button type="button" class="lightbox__btn lightbox__prev" id="lightboxPrev" data-i18n-attr="aria-label:lb.prev" aria-label="الصورة السابقة">
+      <svg class="icon icon--back" aria-hidden="true"><use href="#i-arrow"/></svg>
+    </button>
+    <button type="button" class="lightbox__btn lightbox__next" id="lightboxNext" data-i18n-attr="aria-label:lb.next" aria-label="الصورة التالية">
+      <svg class="icon icon--dir" aria-hidden="true"><use href="#i-arrow"/></svg>
+    </button>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91A9.85 9.85 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23a8.2 8.2 0 0 1 8.23 8.24c0 4.54-3.7 8.23-8.23 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.54.06a6.7 6.7 0 0 1-3.32-2.9c-.25-.43.25-.4.72-1.33.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.4-.41-.56-.42h-.47a.9.9 0 0 0-.66.31c-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74 1.57.68 2.19.74 2.98.62.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.11-.22-.17-.47-.29Z"/></symbol>
+    <symbol id="i-swoosh" viewBox="0 0 240 28" preserveAspectRatio="none"><path fill="currentColor" d="M2 20.5C46 12 112 5.5 176 5.2c22-.1 42 .6 62 2.3-1 .9-2.4 1.4-4 1.5C171 8 102 13.6 30 25.5c-9 1.5-17.5 1.2-24-1.3-2.2-.9-3.2-2.3-4-3.7Z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M4 12h15m-5-5 5 5-5 5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="m16 16 4 4"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M5 4h3.5l1.5 4-2 1.5a11 11 0 0 0 6.5 6.5L16 14l4 1.5V19a1.5 1.5 0 0 1-1.6 1.5C10.6 20 4 13.4 3.5 5.6A1.5 1.5 0 0 1 5 4Z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  </svg>
+
+  <script src="js/config.js"></script>
+  <script src="js/menu-data.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/vendor/gsap.min.js" defer></script>
+  <script src="js/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/animations.js" defer></script>
+</body>
+</html>
